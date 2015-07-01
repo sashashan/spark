@@ -1,6 +1,5 @@
-#hi
-
 package org.apache.spark.mllib.join
+
 import org.sparkalgos.mllib.join.KnnJoin
 
 object knnJoin {
