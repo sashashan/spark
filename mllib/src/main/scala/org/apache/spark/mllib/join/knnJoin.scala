@@ -1,6 +1,6 @@
-package org.apache.spark.mllib.join
-
-import org.sparkalgos.mllib.join.KnnJoin
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext._ 
 
 object knnJoin {
 	
@@ -13,7 +13,8 @@ object knnJoin {
 		
 		println("Hello World!")
 		
-		val sc = new SparkContext("local","knn")
+                val conf = new SparkConf().setAppName("knn").setMaster("/u/qqiu/hadoop-2.6.0/etc/hadoop")
+                val sc = new SparkContext(conf)
 
 		val outer = sc.textFile(args(0))
 		outer.count()
