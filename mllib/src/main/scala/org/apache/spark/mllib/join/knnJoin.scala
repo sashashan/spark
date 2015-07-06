@@ -13,7 +13,7 @@ object knnJoin {
 		
 		println("Hello World!")
 		
-                val conf = new SparkConf().setAppName("knn").setMaster("/u/qqiu/hadoop-2.6.0/bin/hadoop")
+                val conf = new SparkConf().setAppName("knn")
                 val sc = new SparkContext(conf)
 
 		val outer = sc.textFile(args(0))
