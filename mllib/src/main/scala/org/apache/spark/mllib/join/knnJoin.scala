@@ -15,8 +15,8 @@ object knnJoin {
 	 */
 
 	def run(
-		r_points: RDD[String]
-		s_points: RDD[String]
+		r_points: RDD[Vector[A]]
+		s_points: RDD[Vector[A]]
 		dim: Int
 		k: Int
 		n: Int)
