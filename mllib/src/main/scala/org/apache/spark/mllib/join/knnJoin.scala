@@ -13,8 +13,7 @@ object knnJoin {
 		
 		println("Hello World!")
 		
-                val conf = new SparkConf().setAppName("knn").setMaster("yarn-cluster").set("spark.driver.allowMultipleContexts", "true")
-                val sc = new SparkContext(conf)
+                val sc = new SparkContext("yarn-cluster","knn")
 
 		val outer = sc.textFile(args(0))
 		outer.count()
