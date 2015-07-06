@@ -13,7 +13,7 @@ object knnJoin {
 		
 		println("Hello World!")
 		
-                val conf = new SparkConf().setAppName("knn").setMaster("local")
+                val conf = new SparkConf().setAppName("knn").set("spark.driver.allowMultipleContexts", "true")
                 val sc = new SparkContext(conf)
 
 		val outer = sc.textFile(args(0))
