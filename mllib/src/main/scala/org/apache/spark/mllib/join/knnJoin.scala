@@ -19,7 +19,7 @@ object knnJoin {
 		s_points: RDD[Vector[A]]
 		dim: Int
 		k: Int
-		n: Int)
+		n: Int){
 		
 		println("Hello World!")
 		
