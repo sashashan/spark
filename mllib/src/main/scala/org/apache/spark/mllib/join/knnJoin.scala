@@ -27,6 +27,8 @@ object knnJoin {
 		
 		val rand = new Random(n)
 		
+		//vectors.map(e => (rand.nextInt(5), e))
+		
 		
 	}
 
