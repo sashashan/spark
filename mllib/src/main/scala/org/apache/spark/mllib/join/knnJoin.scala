@@ -2,7 +2,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext._ 
 import org.apache.spark.rdd.RDD
-import org.apache.spark.mllib.linalg.{Vector, Vectors}
+import scala.collection.immutable.Vector
 import java.util.Random
 
 object knnJoin {
@@ -17,8 +17,8 @@ object knnJoin {
 	 */
 
 	def run(
-		r_points: RDD[Vector],
-		s_points: RDD[Vector],
+		r_points: RDD[Vector[A]],
+		s_points: RDD[Vector[A]],
 		dim: Int,
 		k: Int,
 		n: Int){
