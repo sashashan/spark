@@ -1,4 +1,6 @@
-class A(id: Int, group: Int){
+class A(id: Int, gr: Int){
   def rid = id
-  def groupID = group
+  def groupID = gr
+  
+  //def compare
 }
