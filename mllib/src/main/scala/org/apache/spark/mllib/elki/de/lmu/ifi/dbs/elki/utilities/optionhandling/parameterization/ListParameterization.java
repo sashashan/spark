@@ -59,7 +59,7 @@ public class ListParameterization extends AbstractParameterization {
    * @param value Value
    */
   public void addParameter(OptionID optionid, Object value) {
-    if (s_debug) System.out.println("#ListParameterization: addParameter " + value + " to " + optionID);
+    if (s_debug) System.out.println("#ListParameterization: addParameter " + value + " to " + optionid);
     parameters.add(new Pair<OptionID, Object>(optionid, value));
   }
   
