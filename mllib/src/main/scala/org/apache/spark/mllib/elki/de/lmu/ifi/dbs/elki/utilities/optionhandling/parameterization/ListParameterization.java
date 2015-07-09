@@ -17,6 +17,8 @@ import de.lmu.ifi.dbs.elki.utilities.pairs.Pair;
  * @author Erich Schubert
  */
 public class ListParameterization extends AbstractParameterization {
+  
+  public boolean s_debug = true;
   /**
    * The actual parameters, for storage
    */
@@ -57,6 +59,7 @@ public class ListParameterization extends AbstractParameterization {
    * @param value Value
    */
   public void addParameter(OptionID optionid, Object value) {
+    if (s_debug) System.out.println("#ListParameterization: addParameter " + value + " to " + optionID);
     parameters.add(new Pair<OptionID, Object>(optionid, value));
   }
   
