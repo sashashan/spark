@@ -27,6 +27,10 @@ import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameters.LongParameter;
  */
 public abstract class TreeIndex<O extends DatabaseObject, N extends Node<N, E>, E extends Entry> extends AbstractLoggable implements Index<O> {
   /**
+   * Sasha's debugging
+   */
+  public boolean s_debug = true;
+  /**
    * OptionID for {@link #FILE_PARAM}
    */
   public static final OptionID FILE_ID = OptionID.getOrCreateOptionID("treeindex.file", "The name of the file storing the index. " + "If this parameter is not set the index is hold in the main memory.");
@@ -135,6 +139,7 @@ public abstract class TreeIndex<O extends DatabaseObject, N extends Node<N, E>, 
    */
   public TreeIndex(Parameterization config) {
     super();
+    if (s_debug) System.out.println("#TreeIndex: constructor");
 
     // file
     if(config.grab(FILE_PARAM)) {
