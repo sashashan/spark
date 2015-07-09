@@ -28,8 +28,12 @@ public class RStarTree<O extends NumberVector<O, ?>> extends NonFlatRStarTree<O,
    * 
    * @param config Parameterization
    */
+   
+  public boolean s_debug = true;
+  
   public RStarTree(Parameterization config) {
     super(config);
+    if (s_debug) System.out.println("#RStarTree: constructor");
     // this.debug = true;
   }
 
