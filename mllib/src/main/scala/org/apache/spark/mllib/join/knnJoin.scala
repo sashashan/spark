@@ -2,8 +2,6 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext._ 
 import org.apache.spark.rdd.RDD
-import scala.collection.immutable.Vector
-import java.util.Random
 
 //Testing elki library
 import de.lmu.ifi.dbs.elki.data.FloatVector
@@ -20,6 +18,7 @@ import de.lmu.ifi.dbs.elki.index._
 import de.lmu.ifi.dbs.elki.parser._
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.ParameterException
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameterization.ListParameterization
+import de.lmu.ifi.dbs.elki.index.Zorder
 
 object knnJoin {
 	
@@ -33,8 +32,8 @@ object knnJoin {
 	 */
 
 	def run(
-		r_points: RDD[Vector[Double]],
-		s_points: RDD[Vector[Double]],
+		r_points: RDD[String],
+		s_points: RDD[String],
 		dim: Int,
 		k: Int,
 		n: Int){
@@ -44,6 +43,16 @@ object knnJoin {
 		val rand = new Random(n)
 		
 		//vectors.map(e => (rand.nextInt(5), e))
+		
+		/**
+		 * Testing Zorder
+		 * Taking in a RDD[String]: <x value>(String) <y value>(String)
+		 * and mapping to to key/value: key: rid, vlaue: B.scala
+		 */
+		 
+		 
+		
+		
 		
 		
 	}
