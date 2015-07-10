@@ -54,7 +54,7 @@ object knnJoin {
 		/**
 		 * Testing Zorder
 		 * Taking in a RDD[String]: <x value>(String) <y value>(String)
-		 * and mapping to to key/value: key: rid, vlaue: B.scala
+		 * and mapping to to key/value: key: rid, vlaue: B(zvalue, source)
 		 */
 		 
 		val parsedData = s_points.map(_.split(' ')) 
@@ -64,25 +64,23 @@ object knnJoin {
 	}
 	
 	//returns: B object
-	def func1 (s: Array[String]){
+	def func1 (s: Array[String]): B = {
 		val scale = 1000
-		 
-		val coord = Array.ofDim[Double](2) //dimension
+		val coord = Array.ofDim[Float](2) //dimension; should I maybe use Double?
 		for (i <- 0 until 2) {
-        		coord(i) = s(i).toDouble
+        		coord(i) = s(i).toFloat
       		}
-      		
 		val converted_coord = Array.ofDim[Int](2) //dimension
       		for (i <- 0 until 2) { //dimension
         		converted_coord(i) = coord(i).toInt
         		coord(i) = coord(i) - converted_coord(i)
         		converted_coord(i) *= scale
-        		converted_coord(i) += coord(i) * scale
+        		val temp = (coord(i) * scale).toInt
+        		converted_coord(i) += temp
       		}
-      		
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
-		
 		val b = new B(zval, 0) //source
+		return b
 	}
 
 }
