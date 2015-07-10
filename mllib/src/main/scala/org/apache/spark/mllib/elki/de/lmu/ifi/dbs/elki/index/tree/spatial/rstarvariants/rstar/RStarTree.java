@@ -104,6 +104,7 @@ public class RStarTree<O extends NumberVector<O, ?>> extends NonFlatRStarTree<O,
    */
   @Override
   protected Class<RStarTreeNode> getNodeClass() {
+    if(s_debug) System.out.println("#RStarTree: Class<RStarTreeNode> getNodeClass()");
     return RStarTreeNode.class;
   }
 }
