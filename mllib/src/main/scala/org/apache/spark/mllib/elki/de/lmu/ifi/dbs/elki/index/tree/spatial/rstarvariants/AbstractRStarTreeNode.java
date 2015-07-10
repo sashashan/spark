@@ -25,11 +25,13 @@ import de.lmu.ifi.dbs.elki.utilities.HyperBoundingBox;
  * @param <E> Entry type
  */
 public abstract class AbstractRStarTreeNode<N extends AbstractRStarTreeNode<N, E>, E extends SpatialEntry> extends AbstractNode<N, E> implements SpatialNode<N, E> {
+  public boolean s_debug = true;
   /**
    * Empty constructor for Externalizable interface.
    */
   public AbstractRStarTreeNode() {
     super();
+    if(s_debug) System.out.println("#AbstractRStarTreeNode: contructor");
   }
 
   /**
