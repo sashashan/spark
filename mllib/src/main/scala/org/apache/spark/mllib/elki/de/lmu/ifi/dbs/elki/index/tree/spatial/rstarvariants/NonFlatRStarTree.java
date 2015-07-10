@@ -26,6 +26,7 @@ import de.lmu.ifi.dbs.elki.index.ExternalSort;
  * @param <E> Entry type
  */
 public abstract class NonFlatRStarTree<O extends NumberVector<O, ?>, N extends AbstractRStarTreeNode<N, E>, E extends SpatialEntry> extends AbstractRStarTree<O, N, E> {
+  public boolean s_debug = true;
   /**
    * Constructor, adhering to
    * {@link de.lmu.ifi.dbs.elki.utilities.optionhandling.Parameterizable}
@@ -34,6 +35,7 @@ public abstract class NonFlatRStarTree<O extends NumberVector<O, ?>, N extends A
    */
   public NonFlatRStarTree(Parameterization config) {
     super(config);
+    if(s_debug) System.out.println("#NonFlatRStarTree: constructor");
   }
 
   /**
