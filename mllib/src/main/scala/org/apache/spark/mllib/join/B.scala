@@ -1,6 +1,4 @@
-import de.lmu.ifi.dbs.elki.index.Zorder
-
-class B(z: Zorder, s: Int){
+class B(z: String, s: Int){
   def zval = z
   def src = s
   
