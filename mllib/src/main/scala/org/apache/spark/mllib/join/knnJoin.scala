@@ -22,6 +22,9 @@ import de.lmu.ifi.dbs.elki.index.Zorder
 
 object knnJoin {
 	
+	// Note to self: need to create a global variable "dimension" and set it in run
+	
+	
 	/**
 	 * Top-level methods for calling knnJoin clustering.
 	 * @param r_points points of the R set 
@@ -38,6 +41,7 @@ object knnJoin {
 		k: Int,
 		n: Int){
 		
+		setDim(dim)
 		println("Hello World!")
 		
 		val rand = new Random(n)
@@ -56,8 +60,26 @@ object knnJoin {
 		
 	}
 	
+	//returns: B object
 	def func1 (s: Array[String]){
+		val scale = 1000
+		 
+		val coord = Array.ofDim[Float](2) //dimension
+		for (i <- 0 until dimension) {
+        		coord(i) = java.lang.Float.parseFloat(parts(coordOffset + i))
+      		}
+      		
+		val converted_coord = Array.ofDim[Int](2) //dimension
+      		for (i <- 0 until 2) { //dimension
+        		converted_coord(i) = coord(i).toInt
+        		coord(i) = coord(i) - converted_coord(i)
+        		converted_coord(i) *= scale
+        		converted_coord(i) += coord(i) * scale
+      		}
+      		
+      		val zval = Zorder.valueOf(2, converted_coord) //dimension
 		
+		val b = B(zval, 0) //source
 	}
 
 }
