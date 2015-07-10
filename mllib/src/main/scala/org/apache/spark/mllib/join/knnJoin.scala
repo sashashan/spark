@@ -20,6 +20,9 @@ import de.lmu.ifi.dbs.elki.utilities.optionhandling.ParameterException
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameterization.ListParameterization
 import de.lmu.ifi.dbs.elki.index.Zorder
 
+import java.io._
+import java.util._
+
 object knnJoin {
 	
 	// Note to self: need to create a global variable "dimension" and set it in run
@@ -64,9 +67,9 @@ object knnJoin {
 	def func1 (s: Array[String]){
 		val scale = 1000
 		 
-		val coord = Array.ofDim[Float](2) //dimension
-		for (i <- 0 until dimension) {
-        		coord(i) = java.lang.Float.parseFloat(parts(coordOffset + i))
+		val coord = Array.ofDim[Double](2) //dimension
+		for (i <- 0 until 2) {
+        		coord(i) = s(i).toDouble
       		}
       		
 		val converted_coord = Array.ofDim[Int](2) //dimension
@@ -79,7 +82,7 @@ object knnJoin {
       		
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
 		
-		val b = B(zval, 0) //source
+		val b = new B(zval, 0) //source
 	}
 
 }
