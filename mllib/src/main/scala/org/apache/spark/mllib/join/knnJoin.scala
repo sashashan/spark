@@ -50,10 +50,13 @@ object knnJoin {
 		 * and mapping to to key/value: key: rid, vlaue: B.scala
 		 */
 		 
-		 
+		val parsedData = s_points.map(_.split(' ')) 
+		val parsed = parsedData.map(line => line.map(e => (line(0), func1)))
 		
 		
-		
+	}
+	
+	def func1 (s: Array[String]){
 		
 	}
 
