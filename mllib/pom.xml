@@ -86,6 +86,12 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>de.lmu.ifi.dbs.elki</groupId>
+      <artifactId>elki</artifactId>
+      <version>1.0</version>
+      <systemPath>$/localdisk/ashanina/git_repos/spark/mllib/src/main/scala/org/apache/spark/mllib/elki/elki.jar</systemPath>
+    </dependency>
+    <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-math3</artifactId>
     </dependency>
