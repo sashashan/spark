@@ -44,7 +44,7 @@ object knnJoin {
 		k: Int,
 		n: Int){
 		
-		setDim(dim)
+		//setDim(dim)
 		println("Hello World!")
 		
 		val rand = new Random(n)
@@ -58,7 +58,7 @@ object knnJoin {
 		 */
 		 
 		val parsedData = s_points.map(_.split(' ')) 
-		val parsed = parsedData.map(line => line.map(e => (line(0), func1)))
+		val parsed = parsedData.map(line => line.map(e => (line(0), func1(line))))
 		
 		
 	}
