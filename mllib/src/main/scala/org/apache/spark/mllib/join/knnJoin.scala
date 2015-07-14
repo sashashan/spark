@@ -80,6 +80,7 @@ object knnJoin {
       		}
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
 		val b = new B(zval, 0) //source
+		println("from func1")
 		return b
 	}
 
