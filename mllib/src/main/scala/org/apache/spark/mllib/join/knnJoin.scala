@@ -80,12 +80,11 @@ object knnJoin {
         		converted_coord(i) += temp
       		}
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
-		val b = new B(zval, 0) //source
-		println(b)
-		val result = b.toString //converting to serializable Scala object
-		println(result)
+      		println(zval)
+		val b = new B(zval.toString, 0) //source
+		println(zval.toString)
 		println("from func1")
-		return result
+		return b
 	}
 
 }
