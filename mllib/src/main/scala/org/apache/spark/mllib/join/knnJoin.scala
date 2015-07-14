@@ -18,7 +18,7 @@ import de.lmu.ifi.dbs.elki.index._
 import de.lmu.ifi.dbs.elki.parser._
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.ParameterException
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameterization.ListParameterization
-import de.lmu.ifi.dbs.elki.index.Zorder
+//import de.lmu.ifi.dbs.elki.index.Zorder
 
 import java.io._
 import java.util._
