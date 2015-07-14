@@ -1,4 +1,4 @@
-class B(z: java.io.Serializable, s: String){
+class B(z: java.io.Serializable, s: java.io.Serializable){
   
   {
     val zval = z
