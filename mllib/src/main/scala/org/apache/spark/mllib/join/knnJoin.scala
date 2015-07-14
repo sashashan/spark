@@ -83,6 +83,7 @@ object knnJoin {
       		println(zval)
 		//val b = new B(zval.asInstanceOf[java.io.Serializable], 0) //source
 		val hi = "hi".asInstanceOf[java.io.Serializable]
+		hi
 		val b = new B(hi, hi) //source
 		println(zval.toString)
 		println("from func1")
