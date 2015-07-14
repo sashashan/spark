@@ -81,8 +81,11 @@ object knnJoin {
       		}
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
 		val b = new B(zval, 0) //source
+		println(b)
+		val result = b.toString //converting to serializable Scala object
+		println(result)
 		println("from func1")
-		return b
+		return result
 	}
 
 }
