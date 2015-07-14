@@ -81,7 +81,9 @@ object knnJoin {
       		}
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
       		println(zval)
-		val b = new B(zval.asInstanceOf[java.io.Serializable], 0) //source
+		//val b = new B(zval.asInstanceOf[java.io.Serializable], 0) //source
+		val hi = "hi"
+		val b = new B(hi, 0) //source
 		println(zval.toString)
 		println("from func1")
 		return b
