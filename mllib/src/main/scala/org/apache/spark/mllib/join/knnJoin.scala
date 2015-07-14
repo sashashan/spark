@@ -58,7 +58,8 @@ object knnJoin {
 		 */
 		 
 		val parsedData = s_points.map(_.split(' ')) 
-		val parsed = parsedData.map(line => line.map(e => (line(0), func1(line))))
+		val hi = "hi".asInstanceOf[java.io.Serializable]
+		val parsed = parsedData.map(line => line.map(e => (line(0),hi)))
 		parsed.first()
 		
 		
