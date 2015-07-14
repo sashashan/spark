@@ -1,6 +1,11 @@
 class B(z: String, s: Int){
-  def zval = z
-  def src = s
+  
+  {
+    val zval = z.asInstanceOf[java.io.Serializable]
+    val src = s
+  }
+  
   
   //def compare
+  
 }
