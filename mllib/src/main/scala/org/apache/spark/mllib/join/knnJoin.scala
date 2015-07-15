@@ -47,7 +47,7 @@ object knnJoin {
 		//setDim(dim)
 		println("Hello World!")
 		
-		val rand = new Random(n)
+		val rand = new Random(numberOfPartition)
 		
 		//vectors.map(e => (rand.nextInt(5), e))
 		
