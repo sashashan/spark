@@ -75,10 +75,22 @@ object knnJoin {
 		spatparams.addParameter(TreeIndex.CACHE_SIZE_ID, cacheSize)
 		spatparams.addParameter(TreeIndex.PAGE_SIZE_ID, blockSize)
 		val rt = new RStarTree[FloatVector](spatparams)
+		
+		/**
+		// Putting this of until later - will first try passing Zorder to bulkload
 		val fa = Array.ofDim[Float](dimension)
       		val fv = new FloatVector(fa)
       		
       		//Making a list of Objects and filling them in with FloatVectors
+		try {
+        		rt.bulkLoad()
+      		} catch {
+        		case e: Exception => {
+          			System.err.println("Bulkload throws exception : " + e.getMessage)
+          			System.exit(-1)
+        		}
+        	}*/ 
+ 
 		
 	}
 	
