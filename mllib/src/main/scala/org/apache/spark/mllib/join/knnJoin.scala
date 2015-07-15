@@ -59,7 +59,7 @@ object knnJoin {
 		 
 		val parsedData = s_points.map(_.split(' ')) 
 		val hi = "hi".asInstanceOf[java.io.Serializable]
-		val parsed = parsedData.map(line => line.map(e => (line(0),hi)))
+		val parsed = parsedData.map(line => line.map(e => (line(0), func1(line))))
 		parsed.first()
 		
 		
@@ -82,12 +82,12 @@ object knnJoin {
       		}
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
       		println(zval)
-		//val b = new B(zval.asInstanceOf[java.io.Serializable], 0) //source
-		val hi = "hi".asInstanceOf[java.io.Serializable]
+		val b = new B(zval.asInstanceOf[java.io.Serializable], 0) //source
+		/**val hi = "hi".asInstanceOf[java.io.Serializable]
 		hi
 		val b = new B(hi, hi) //source
 		println(zval.toString)
-		println("from func1")
+		println("from func1")*/
 		return b
 	}
 
