@@ -1,11 +1,5 @@
-class B(z: java.io.Serializable, s: java.io.Serializable) extends Serializable{
+class B(var zval: java.io.Serializable, var src: java.io.Serializable) extends Serializable{
   
-  {
-    val zval = z
-    val src = s
-  }
-  
-  
-  //def compare
+  override def toString = s"zval = $zval src = $src"
   
 }
