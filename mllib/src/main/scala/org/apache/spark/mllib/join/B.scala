@@ -1,4 +1,4 @@
-class B(z: java.io.Serializable, s: java.io.Serializable){
+class B(z: java.io.Serializable, s: java.io.Serializable) extends Serializable{
   
   {
     val zval = z
