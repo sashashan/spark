@@ -42,7 +42,7 @@ object knnJoin {
 		s_points: RDD[String],
 		dim: Int,
 		k: Int,
-		n: Int){
+		numberOfPartition: Int){
 		
 		//setDim(dim)
 		println("Hello World!")
@@ -58,10 +58,27 @@ object knnJoin {
 		 */
 		 
 		val parsedData = s_points.map(_.split(' ')) 
-		val hi = "hi".asInstanceOf[java.io.Serializable]
-		val parsed = parsedData.map(line => line.map(e => (line(0), func1(line))))
-		parsed.first()
+		val parsed = parsedData.map(line => (line(0), func1(line))) //RDD[(String, B)]
+		parsed.count()
 		
+		/**
+		 * Testing R*Tree
+		 * From RDD[(String, B)] we want to build a tree, assuming this is one S set
+		 */
+		 
+		//Following the logic of Phase1
+		val MB = 1024 * 1024
+		val KB = 1024
+		val blockSize = 128 * KB
+		val cacheSize = 64 * MB
+		val spatparams = new ListParameterization()
+		spatparams.addParameter(TreeIndex.CACHE_SIZE_ID, cacheSize)
+		spatparams.addParameter(TreeIndex.PAGE_SIZE_ID, blockSize)
+		val rt = new RStarTree[FloatVector](spatparams)
+		val fa = Array.ofDim[Float](dimension)
+      		val fv = new FloatVector(fa)
+      		
+      		//Making a list of Objects and filling them in with FloatVectors
 		
 	}
 	
@@ -83,11 +100,6 @@ object knnJoin {
       		val zval = Zorder.valueOf(2, converted_coord) //dimension
       		println(zval)
 		val b = new B(zval.asInstanceOf[java.io.Serializable], 0) //source
-		/**val hi = "hi".asInstanceOf[java.io.Serializable]
-		hi
-		val b = new B(hi, hi) //source
-		println(zval.toString)
-		println("from func1")*/
 		return b
 	}
 
