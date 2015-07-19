@@ -34,8 +34,17 @@
   <name>Spark Project ML Library</name>
   <url>http://spark.apache.org/</url>
 
+
   <dependencies>
-    <dependency>
+	  <dependency>
+		  <groupId>de.lmu.ifi.dbs</groupId>
+		  <artifactId>elki</artifactId>
+		  <version>1.0</version>
+	  </dependency>
+	  
+	  
+	  
+     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_${scala.binary.version}</artifactId>
       <version>${project.version}</version>
@@ -134,6 +143,12 @@
   </dependencies>
   <profiles>
     <profile>
+     <repositories>
+     <repository>
+        <id>repo</id>
+        <url>file:///localhost/ashanina/git_repos/spark/repo</url>
+     </repository>
+     </repositories>
       <id>netlib-lgpl</id>
       <dependencies>
         <dependency>
