@@ -1,4 +1,3 @@
-class Point(x: Double, y: Double, z: Double){
-
-
+class Point(var x: Double, var y: Double, var z: Double){
+  
 }
