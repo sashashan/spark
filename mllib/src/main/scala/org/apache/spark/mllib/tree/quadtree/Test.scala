@@ -1,3 +1,6 @@
+import java.awt.Rectangle
+import java.util.ArrayList
+
 object Test{
 
   def main(args: Array[String]) {
