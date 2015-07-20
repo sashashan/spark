@@ -7,8 +7,8 @@ import java.util.ArrayList
 class Quadtree(private var level: Int, private var bounds: Rectangle) {
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 5
-  private var MAX_OBJECTS: Int = 10
-  private var objects = new ArrayList[Rectangle]()
+  private var MAX_OBJECTS: Int = 3
+  private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
   
   def clear() {
@@ -30,11 +30,12 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     nodes(3) = new Quadtree(level + 1, new Rectangle(x + subWidth, y + subHeight, subWidth, subHeight))
   }
 
-  private def getIndex(pRect: Rectangle): Int = {
+  private def getIndex(p: Point): Int = {
     var index = -1
     val verticalMidpoint = bounds.getX + (bounds.getWidth / 2)
     val horizontalMidpoint = bounds.getY + (bounds.getHeight / 2)
-    val topQuadrant = (pRect.getY < horizontalMidpoint && pRect.getY + pRect.getHeight < horizontalMidpoint)
+    // 
+    val topQuadrant = (p.y < horizontalMidpoint && p.y + pRect.getHeight < horizontalMidpoint)
     val bottomQuadrant = (pRect.getY > horizontalMidpoint)
     if (pRect.getX < verticalMidpoint && pRect.getX + pRect.getWidth < verticalMidpoint) {
       if (topQuadrant) {
@@ -52,15 +53,16 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     index
   }
 
-  def insert(pRect: Rectangle) {
+  def insert(p: Point) {
+    // if the node is not a leaf ...
     if (nodes(0) != null) {
-      val index = getIndex(pRect)
+      val index = getIndex(p)
       if (index != -1) {
-        nodes(index).insert(pRect)
+        nodes(index).insert(p)
         return
       }
     }
-    objects.add(pRect)
+    objects.add(p)
     if (objects.size > MAX_OBJECTS && level < MAX_LEVELS) {
       if (nodes(0) == null) {
         split()
