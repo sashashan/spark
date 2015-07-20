@@ -1,4 +1,6 @@
 import scala.collection.JavaConversions._
+import java.awt.Rectangle
+import java.util.ArrayList
 
 class Quadtree(private var level: Int, private var bounds: Rectangle) {
   // bounds represents the 2D space that the node occupies
