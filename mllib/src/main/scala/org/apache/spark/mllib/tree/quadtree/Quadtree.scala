@@ -1,3 +1,5 @@
+package org.apache.spark.mllib.tree.quadtree
+
 import scala.collection.JavaConversions._
 import java.awt.Rectangle
 import java.util.ArrayList
