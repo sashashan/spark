@@ -12,7 +12,7 @@ object Test{
     val width = 1
     
     val parsedData = s_points.map(_.split(' ')) //RDD[String]
-    val recData = parsedData.map(line => new Rectangle(line(0).toIny, line(1).toInt, width, height))
+    val recData = parsedData.map(line => new Rectangle(line(0).toInt, line(1).toInt, width, height))
     val allObjects = new ArrayList[Rectangle]() // S set
     recData.collect().foreach(line => allObjects.add(line))
     
