@@ -1,3 +1,5 @@
+package org.apache.spark.mllib.tree.quadtree
+
 import org.apache.spark.rdd.RDD
 import java.awt.Rectangle
 import java.util.ArrayList
@@ -32,6 +34,7 @@ object Test{
     val returnObjects = new ArrayList[Rectangle]()
     for (i <- 0 until allObjects.size) {
       returnObjects.clear()
+      println("## For obj " + allObjects.get(i).toString())
       quad.retrieve(returnObjects, rObjects.get(i))
       for (l <- 0 until returnObjects.size) {
         println(returnObjects.get(l).toString())
