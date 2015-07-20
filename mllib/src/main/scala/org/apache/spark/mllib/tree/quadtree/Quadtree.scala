@@ -5,7 +5,7 @@ import java.util.ArrayList
 class Quadtree(private var level: Int, private var bounds: Rectangle) {
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 5
-  private var objects: List = new ArrayList()
+  private var objects = new ArrayList[Rectangle]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
   
   def clear() {
@@ -74,7 +74,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     }
   }
   
-  def retrieve(returnObjects: List, pRect: Rectangle): List = {
+  def retrieve(returnObjects: ArrayList, pRect: Rectangle): ArrayList = {
     val index = getIndex(pRect)
     if (index != -1 && nodes(0) != null) {
       nodes(index).retrieve(returnObjects, pRect)
