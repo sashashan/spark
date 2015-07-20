@@ -3,23 +3,6 @@ import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext._ 
 import org.apache.spark.rdd.RDD
 
-//Testing elki library
-import de.lmu.ifi.dbs.elki.data.FloatVector
-import de.lmu.ifi.dbs.elki.data.DoubleVector
-import de.lmu.ifi.dbs.elki.database.DistanceResultPair
-import de.lmu.ifi.dbs.elki.distance.FloatDistance
-import de.lmu.ifi.dbs.elki.distance.DoubleDistance
-import de.lmu.ifi.dbs.elki.distance.distancefunction.DistanceFunction
-import de.lmu.ifi.dbs.elki.distance.distancefunction.EuclideanDistanceFunction
-import de.lmu.ifi.dbs.elki.index.tree.spatial.rstarvariants.rstar.RStarTree
-import de.lmu.ifi.dbs.elki.index.tree.spatial._
-import de.lmu.ifi.dbs.elki.index.tree.TreeIndex
-import de.lmu.ifi.dbs.elki.index._
-import de.lmu.ifi.dbs.elki.parser._
-import de.lmu.ifi.dbs.elki.utilities.optionhandling.ParameterException
-import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameterization.ListParameterization
-//import de.lmu.ifi.dbs.elki.index.Zorder
-
 import java.io._
 import java.util._
 
@@ -51,49 +34,9 @@ object knnJoin {
 		
 		//vectors.map(e => (rand.nextInt(5), e))
 		
-		/**
-		 * Testing Zorder
-		 * Taking in a RDD[String]: <x value>(String) <y value>(String)
-		 * and mapping to to key/value: key: rid, vlaue: B(zvalue, source)
-		 */
-		 
-		val parsedData = s_points.map(_.split(' ')) 
-		val parsed = parsedData.map(line => (line(0), func1(line))) //RDD[(String, B)]
-		parsed.count()
-		
-		/**
-		 * Testing R*Tree
-		 * From RDD[(String, B)] we want to build a tree, assuming this is one S set
-		 */
-		 
-		//Following the logic of Phase1
-		val MB = 1024 * 1024
-		val KB = 1024
-		val blockSize = 128 * KB
-		val cacheSize = 64 * MB
-		val spatparams = new ListParameterization()
-		spatparams.addParameter(TreeIndex.CACHE_SIZE_ID, cacheSize)
-		spatparams.addParameter(TreeIndex.PAGE_SIZE_ID, blockSize)
-		val rt = new RStarTree[FloatVector](spatparams)
-		
-		/**
-		// Putting this of until later - will first try passing Zorder to bulkload
-		val fa = Array.ofDim[Float](dimension)
-      		val fv = new FloatVector(fa)
-      		
-      		//Making a list of Objects and filling them in with FloatVectors
-		try {
-        		rt.bulkLoad()
-      		} catch {
-        		case e: Exception => {
-          			System.err.println("Bulkload throws exception : " + e.getMessage)
-          			System.exit(-1)
-        		}
-        	}*/ 
- 
-		
 	}
 	
+	/**
 	//returns: B object
 	def func1 (s: Array[String]): B = {
 		val scale = 1000
@@ -114,5 +57,6 @@ object knnJoin {
 		val b = new B(zval.asInstanceOf[java.io.Serializable], 0) //source
 		return b
 	}
+	*/
 
 }
