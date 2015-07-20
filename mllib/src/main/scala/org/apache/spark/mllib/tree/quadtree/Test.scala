@@ -14,10 +14,13 @@ object Test{
     val parsedData = s_points.map(_.split(' ')) //RDD[String]
     val recData = parsedData.map(line => new Rectangle(line(0), line(1), width, height))
     val allObjects = new ArrayList[Rectangle]() // S set
+    recData.collect().foreach(line => allObjects.add(line))
     
     
     val parsedData2 = r_points.map(_.split(' '))
+    val recData2 = parsedData.map(line => new Rectangle(line(0), line(1), width, height))
     val rObjects = new ArrayList[Rectangle]() // R set
+    recData2.collect().foreach(line => allObjects.add(line))
     
     val quad = new Quadtree(0, new Rectangle(0, 0, 600, 600))
     quad.clear()
@@ -31,9 +34,9 @@ object Test{
       returnObjects.clear()
       quad.retrieve(returnObjects, rObjects.get(i))
       for (l <- 0 until returnObjects.size) {
-        println("X val" + returnObjects.get(l).x)
-        println("Y val" + returnObjects.get(l).y)
+        println(returnObjects.get(l).toString())
       }
     }
-  }
-}
+    
+  } //end main
+} //end class
