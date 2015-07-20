@@ -74,5 +74,14 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     }
   }
   
+  def retrieve(returnObjects: List, pRect: Rectangle): List = {
+    val index = getIndex(pRect)
+    if (index != -1 && nodes(0) != null) {
+      nodes(index).retrieve(returnObjects, pRect)
+    }
+    returnObjects.addAll(objects)
+    returnObjects
+  }
+  
   
 } //end class
