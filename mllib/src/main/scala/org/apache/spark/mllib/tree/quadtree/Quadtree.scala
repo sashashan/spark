@@ -35,15 +35,15 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     val verticalMidpoint = bounds.getX + (bounds.getWidth / 2)
     val horizontalMidpoint = bounds.getY + (bounds.getHeight / 2)
     // 
-    val topQuadrant = (p.y < horizontalMidpoint && p.y + pRect.getHeight < horizontalMidpoint)
-    val bottomQuadrant = (pRect.getY > horizontalMidpoint)
-    if (pRect.getX < verticalMidpoint && pRect.getX + pRect.getWidth < verticalMidpoint) {
+    val topQuadrant = (p.y < horizontalMidpoint)
+    val bottomQuadrant = (p.y > horizontalMidpoint)
+    if (p.x < verticalMidpoint) {
       if (topQuadrant) {
         index = 1
       } else if (bottomQuadrant) {
         index = 2
       }
-    } else if (pRect.getX > verticalMidpoint) {
+    } else if (p.x > verticalMidpoint) {
       if (topQuadrant) {
         index = 0
       } else if (bottomQuadrant) {
@@ -79,10 +79,10 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     }
   }
   
-  def retrieve(returnObjects: ArrayList[Rectangle], pRect: Rectangle): ArrayList[Rectangle] = {
-    val index = getIndex(pRect)
+  def retrieve(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
+    val index = getIndex(p)
     if (index != -1 && nodes(0) != null) {
-      nodes(index).retrieve(returnObjects, pRect)
+      nodes(index).retrieve(returnObjects, p)
     }
     returnObjects.addAll(objects)
     returnObjects
