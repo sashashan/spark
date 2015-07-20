@@ -22,7 +22,7 @@ object Test{
     val parsedData2 = r_points.map(_.split(' '))
     val recData2 = parsedData.map(line => new Rectangle(line(0).toInt, line(1).toInt, width, height))
     val rObjects = new ArrayList[Rectangle]() // R set
-    recData2.collect().foreach(line => allObjects.add(line))
+    recData2.collect().foreach(line => rObjects.add(line))
     
     val quad = new Quadtree(0, new Rectangle(0, 0, 12, 12))
     quad.clear()
