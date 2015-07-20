@@ -8,8 +8,8 @@ object Test{
     	s_points: RDD[String],
 	r_points: RDD[String]) {
 		  
-    val height = 2
-    val width = 2
+    val height = 0.1
+    val width = 0.1
     
     val parsedData = s_points.map(_.split(' ')) //RDD[String]
     val recData = parsedData.map(line => new Rectangle(line(0).toIny, line(1).toInt, width, height))
@@ -22,7 +22,7 @@ object Test{
     val rObjects = new ArrayList[Rectangle]() // R set
     recData2.collect().foreach(line => allObjects.add(line))
     
-    val quad = new Quadtree(0, new Rectangle(0, 0, 600, 600))
+    val quad = new Quadtree(0, new Rectangle(0, 0, 10, 10))
     quad.clear()
     
     for (i <- 0 until allObjects.size) {
