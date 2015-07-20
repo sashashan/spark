@@ -15,7 +15,7 @@ object Test{
     val allObjects = new ArrayList[Rectangle]() // S set
     
     
-    val parsedData = r_points.map(_.split(' '))
+    val parsedData2 = r_points.map(_.split(' '))
     val rObjects = new ArrayList[Rectangle]() // R set
     
     val quad = new Quadtree(0, new Rectangle(0, 0, 600, 600))
