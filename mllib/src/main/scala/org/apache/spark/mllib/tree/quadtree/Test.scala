@@ -11,7 +11,8 @@ object Test{
     val height = 2
     val width = 2
     
-    val parsedData = s_points.map(_.split(' '))
+    val parsedData = s_points.map(_.split(' ')) //RDD[String]
+    val recData = parsedData.map(line => new Rectangle(line(0), line(1), width, height))
     val allObjects = new ArrayList[Rectangle]() // S set
     
     
