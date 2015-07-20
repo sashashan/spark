@@ -1,3 +1,5 @@
+import scala.collection.JavaConversions._
+
 class Quadtree(private var level: Int, private var bounds: Rectangle) {
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 5
