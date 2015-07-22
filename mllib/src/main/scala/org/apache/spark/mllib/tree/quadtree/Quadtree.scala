@@ -83,6 +83,12 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     val index = getIndex(p)
     if (index != -1 && nodes(0) != null) {
       nodes(index).retrieve(returnObjects, p)
+    } 
+    // special cause for when the point p lies on the boundaries - we need to check all of its children
+    else if (index == -1 && nodes(0) != null) {
+      for (i <- 0 until 4) {
+        nodes(i).retrieve(returnObjects, p)
+      }
     }
     returnObjects.addAll(objects)
     returnObjects
