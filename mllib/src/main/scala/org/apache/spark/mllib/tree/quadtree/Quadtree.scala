@@ -100,16 +100,16 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     if (nodes(0) != null) {
       println("Level: " + level)
       println("From top rght corner")
-      printTree(nodes[0])
+      printTree(node([0))
       println("Level: " + level)
       println("From top left corner")
-      printTree(nodes[1])
+      printTree(nodes(1))
       println("Level: " + level)
       println("From bottom left corner")
-      printTree(nodes[2])
+      printTree(nodes(2))
       println("Level: " + level)
       println("From bottom right corner")
-      printTree(nodes[3])
+      printTree(nodes(3))
     }
   }
   
