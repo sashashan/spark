@@ -34,7 +34,7 @@ object Test{
     val returnObjects = new ArrayList[Point]()
     for (i <- 0 until allObjects.size) {
       returnObjects.clear()
-      println("## For obj " + allObjects.get(i).toString())
+      println("## For obj " + rObjects.get(i).toString())
       quad.retrieve(returnObjects, rObjects.get(i))
       for (l <- 0 until returnObjects.size) {
         println(returnObjects.get(l).toString())
