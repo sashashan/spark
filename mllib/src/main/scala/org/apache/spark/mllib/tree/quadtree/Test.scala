@@ -31,7 +31,7 @@ object Test{
       quad.insert(allObjects.get(i))
     }
     
-    val returnObjects = new ArrayList[Rectangle]()
+    val returnObjects = new ArrayList[Point]()
     for (i <- 0 until allObjects.size) {
       returnObjects.clear()
       println("## For obj " + allObjects.get(i).toString())
