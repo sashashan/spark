@@ -88,8 +88,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     returnObjects
   }
   
-  def printTree(tree: Quadtree) {
-    if (tree == null) return
+  def printTree {
     // printing any surface points
     if (objects != null) {
       println("Level: " + level)
@@ -112,6 +111,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
       println("From bottom right corner")
       printTree(nodes(3))
     }
+    else return
   }
   
 } //end class
