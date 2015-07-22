@@ -31,7 +31,7 @@ object Test{
       quad.insert(allObjects.get(i))
     }
     
-    quad.printTree()
+    quad.printTree
     
     val returnObjects = new ArrayList[Point]()
     for (i <- 0 until allObjects.size) {
