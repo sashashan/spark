@@ -97,7 +97,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
       }
     }
     // printing surface points of the children
-    if (nodes[0] != null) {
+    if (nodes(0) != null) {
       println("Level: " + level)
       println("From top rght corner")
       printTree(nodes[0])
