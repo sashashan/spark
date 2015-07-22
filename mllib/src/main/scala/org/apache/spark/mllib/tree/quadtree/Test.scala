@@ -2,6 +2,7 @@ package org.apache.spark.mllib.tree.quadtree
 
 import org.apache.spark.rdd.RDD
 import java.util.ArrayList
+import java.awt.Rectangle
 
 object Test{
 
