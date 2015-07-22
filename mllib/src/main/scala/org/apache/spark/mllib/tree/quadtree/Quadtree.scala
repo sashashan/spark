@@ -2,6 +2,7 @@ package org.apache.spark.mllib.tree.quadtree
 
 import scala.collection.JavaConversions._
 import java.util.ArrayList
+import java.awt.Rectangle
 
 class Quadtree(private var level: Int, private var bounds: Rectangle) {
   // bounds represents the 2D space that the node occupies
