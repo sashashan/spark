@@ -20,7 +20,7 @@ object Test{
     
     
     val parsedData2 = r_points.map(_.split(' '))
-    val recData2 = parsedData.map(line => new Point(line(0).toInt, line(1).toInt))
+    val recData2 = parsedData2.map(line => new Point(line(0).toInt, line(1).toInt))
     val rObjects = new ArrayList[Point]() // R set
     recData2.collect().foreach(line => rObjects.add(line))
     
