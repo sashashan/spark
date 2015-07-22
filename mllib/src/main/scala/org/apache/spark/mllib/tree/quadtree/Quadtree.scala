@@ -6,8 +6,8 @@ import java.awt.Rectangle
 
 class Quadtree(private var level: Int, private var bounds: Rectangle) {
   // bounds represents the 2D space that the node occupies
-  private var MAX_LEVELS: Int = 5
-  private var MAX_OBJECTS: Int = 3
+  private var MAX_LEVELS: Int = 10000
+  private var MAX_OBJECTS: Int = 100
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
   
@@ -79,17 +79,11 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     }
   }
   
-  def retrieve(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
+  def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
     val index = getIndex(p)
     if (index != -1 && nodes(0) != null) {
       nodes(index).retrieve(returnObjects, p)
     } 
-    // special cause for when the point p lies on the boundaries - we need to check all of its children
-    else if (index == -1 && nodes(0) != null) {
-      for (i <- 0 until 4) {
-        nodes(i).retrieve(returnObjects, p)
-      }
-    }
     returnObjects.addAll(objects)
     returnObjects
   }
@@ -118,6 +112,28 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
       nodes(3).printTree
     }
     else return
+  }
+  
+  def eucledianDist(p1: Point, p2: Point): Int {
+    math.sqrt(pow(p1.getX - p2.getX, 2) + pow(p1.getY - p2.getY, 2)).toInt
+  }
+  
+  def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] {
+    // case 1: where the r point lies in the square, and not on the border
+    val index = getIndex(rp)
+    if (index > 0) {
+      retrieveForKNN(result, rp)
+      println("Case 1, possible points:")
+      for (l <- 0 until result.size) {
+        println(result.get(l).toString())
+      }
+      
+    }
+    // case 2: where the r point lies on the border 
+    else {
+      
+    }
+    result
   }
   
 } //end class
