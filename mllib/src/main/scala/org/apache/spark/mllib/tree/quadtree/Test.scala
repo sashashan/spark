@@ -34,7 +34,7 @@ object Test{
     quad.printTree
     
     val returnObjects = new ArrayList[Point]()
-    for (i <- 0 until allObjects.size) {
+    for (i <- 0 until rObjects.size) {
       returnObjects.clear()
       println("## For obj " + rObjects.get(i).toString())
       quad.retrieve(returnObjects, rObjects.get(i))
