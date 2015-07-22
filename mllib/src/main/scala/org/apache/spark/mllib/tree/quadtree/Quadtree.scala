@@ -35,15 +35,15 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     val verticalMidpoint = bounds.getX + (bounds.getWidth / 2)
     val horizontalMidpoint = bounds.getY + (bounds.getHeight / 2)
     // 
-    val topQuadrant = (p.y < horizontalMidpoint)
-    val bottomQuadrant = (p.y > horizontalMidpoint)
-    if (p.x < verticalMidpoint) {
+    val topQuadrant = (p.getY < horizontalMidpoint)
+    val bottomQuadrant = (p.getY > horizontalMidpoint)
+    if (p.getX < verticalMidpoint) {
       if (topQuadrant) {
         index = 1
       } else if (bottomQuadrant) {
         index = 2
       }
-    } else if (p.x > verticalMidpoint) {
+    } else if (p.getX > verticalMidpoint) {
       if (topQuadrant) {
         index = 0
       } else if (bottomQuadrant) {
