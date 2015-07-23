@@ -158,7 +158,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     val index = getIndex(rp)
     if (index >= 0) {
       retrieveForKNN(result, rp)
-      println("Case 1, possible points:")
+      println("Possible points:")
       for (l <- 0 until result.size) {
         println(result.get(l).toString())
       }
