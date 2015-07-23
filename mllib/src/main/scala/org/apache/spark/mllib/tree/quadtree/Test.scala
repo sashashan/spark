@@ -37,14 +37,11 @@ object Test{
     for (i <- 0 until rObjects.size) {
       returnObjects.clear()
       println("## For obj " + rObjects.get(i).toString())
-      quad.retrieveForKNN(returnObjects, rObjects.get(i))
+      quad.kNN(rObjects.get(i), 2, returnObjects)
       for (l <- 0 until returnObjects.size) {
-        println(returnObjects.get(l).toString())
+        //println(returnObjects.get(l).toString())
       }
     }
-    returnObjects.clear()
-    println("Testing the kNN")
-    quad.kNN(rObjects.get(0), 2, returnObjects)
     
   } //end main
 } //end class
