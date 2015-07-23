@@ -67,7 +67,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
    * when the r point lies on the midline. 
    */
   def isOutsideTheNode(p: Point): Boolean = {
-    val isAboveOrBelow = (p.getY > bounds.getY) || (p.getY > (bounds.getY + bounds.getHeight)
+    val isAboveOrBelow = (p.getY > bounds.getY) || (p.getY > (bounds.getY + bounds.getHeight))
     val isRightOrLeft = (p.getX > (bounds.getX + bounds.getWidth)) || (p.getX < bounds.getX)
     isAboveOrBelow || isRightOrLeft
   }
