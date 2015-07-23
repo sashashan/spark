@@ -25,10 +25,10 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     val subHeight = (bounds.getHeight / 2)
     val x = bounds.getX
     val y = bounds.getY
-    nodes(0) = new Quadtree(level + 1, new Rectangle2D(x + subWidth, y, subWidth, subHeight))
-    nodes(1) = new Quadtree(level + 1, new Rectangle2D(x, y, subWidth, subHeight))
-    nodes(2) = new Quadtree(level + 1, new Rectangle2D(x, y + subHeight, subWidth, subHeight))
-    nodes(3) = new Quadtree(level + 1, new Rectangle2D(x + subWidth, y + subHeight, subWidth, subHeight))
+    nodes(0) = new Quadtree(level + 1, new Rectangle2D.Double(x + subWidth, y, subWidth, subHeight))
+    nodes(1) = new Quadtree(level + 1, new Rectangle2D.Double(x, y, subWidth, subHeight))
+    nodes(2) = new Quadtree(level + 1, new Rectangle2D.Double(x, y + subHeight, subWidth, subHeight))
+    nodes(3) = new Quadtree(level + 1, new Rectangle2D.Double(x + subWidth, y + subHeight, subWidth, subHeight))
   }
 
   private def getIndex(p: Point): Int = {
