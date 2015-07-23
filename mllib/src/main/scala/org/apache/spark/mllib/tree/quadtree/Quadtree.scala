@@ -3,9 +3,9 @@ import scala.util.Sorting
 
 import scala.collection.JavaConversions._
 import java.util.ArrayList
-import java.awt.Rectangle
+import java.awt.geom.Rectangle2D
 
-class Quadtree(private var level: Int, private var bounds: Rectangle) {
+class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 10000
   private var MAX_OBJECTS: Int = 100
@@ -21,14 +21,14 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
   }
   
   private def split() {
-    val subWidth = (bounds.getWidth / 2).toInt
-    val subHeight = (bounds.getHeight / 2).toInt
-    val x = bounds.getX.toInt
-    val y = bounds.getY.toInt
-    nodes(0) = new Quadtree(level + 1, new Rectangle(x + subWidth, y, subWidth, subHeight))
-    nodes(1) = new Quadtree(level + 1, new Rectangle(x, y, subWidth, subHeight))
-    nodes(2) = new Quadtree(level + 1, new Rectangle(x, y + subHeight, subWidth, subHeight))
-    nodes(3) = new Quadtree(level + 1, new Rectangle(x + subWidth, y + subHeight, subWidth, subHeight))
+    val subWidth = (bounds.getWidth / 2)
+    val subHeight = (bounds.getHeight / 2)
+    val x = bounds.getX
+    val y = bounds.getY
+    nodes(0) = new Quadtree(level + 1, new Rectangle2D(x + subWidth, y, subWidth, subHeight))
+    nodes(1) = new Quadtree(level + 1, new Rectangle2D(x, y, subWidth, subHeight))
+    nodes(2) = new Quadtree(level + 1, new Rectangle2D(x, y + subHeight, subWidth, subHeight))
+    nodes(3) = new Quadtree(level + 1, new Rectangle2D(x + subWidth, y + subHeight, subWidth, subHeight))
   }
 
   private def getIndex(p: Point): Int = {
