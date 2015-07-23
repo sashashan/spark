@@ -125,6 +125,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     if (index >= 0) {
       retrieveForKNN(result, rp)
       println("Case 1, possible points:")
+      /**
       for (l <- 0 until result.size) {
         println(result.get(l).toString())
       }
@@ -137,12 +138,14 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
       }
       Sorting.quickSort(list)(DistanceOrdering)
       println("The List of ordered distances: " + list)
+      */
     }
     // case 2: where the r point lies on the border 
     else {
       
     }
-    return result
+    
+    result
   }
   
 } //end class
