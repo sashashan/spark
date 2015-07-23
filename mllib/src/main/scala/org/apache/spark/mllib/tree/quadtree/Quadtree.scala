@@ -1,4 +1,5 @@
 package org.apache.spark.mllib.tree.quadtree
+import scala.util.Sorting
 
 import scala.collection.JavaConversions._
 import java.util.ArrayList
@@ -127,7 +128,15 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
       for (l <- 0 until result.size) {
         println(result.get(l).toString())
       }
-      
+      // Get the distances betweeen the points, sort them and get the first k points
+      var list = List[Point](result.size)
+      for (i <- 0 until result.size) {
+        result.get(i).setDist(eucledianDist(rp, result.get(i)))
+        println("The distance was set to: " + result.get(i).getDist)
+        list :: result.get(i)
+      }
+      Sorting.quickSort(list)(DistanceOrdering)
+      println("The List of ordered distances: " + list)
     }
     // case 2: where the r point lies on the border 
     else {
@@ -137,3 +146,4 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
   }
   
 } //end class
+
