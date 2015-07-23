@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D
 class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 10000
-  private var MAX_OBJECTS: Int = 100
+  private var MAX_OBJECTS: Int = 3
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
   
@@ -93,6 +93,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     // printing any surface points
     if (objects != null) {
       println("Level: " + level)
+      println("Borders: x: " + bounds.getX + " y: " + bounds.getY + " width: " + bounds.getWidth + " height: " + bounds.getHeight)
       for (i <- 0 until objects.size) {
         println(objects.get(i).toString())
       }
@@ -138,8 +139,12 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
       }
       Sorting.quickSort[Point](list)(DistanceOrdering)
       println("The List of ordered distances:")
-      for ( x <- list ) {
+      for (x <- list ) {
          println(x)
+      }
+      result.clear()
+      for (i <- 0 until k) {
+        result.add(list(i))
       }
     }
     // case 2: where the r point lies on the border 
