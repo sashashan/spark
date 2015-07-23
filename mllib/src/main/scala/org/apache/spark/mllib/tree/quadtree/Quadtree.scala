@@ -137,7 +137,10 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
         list(i) = result.get(i)
       }
       Sorting.quickSort[Point](list)(DistanceOrdering)
-      println("The List of ordered distances: " + list)
+      println("The List of ordered distances:")
+      for ( x <- list ) {
+         println(x)
+      }
     }
     // case 2: where the r point lies on the border 
     else {
