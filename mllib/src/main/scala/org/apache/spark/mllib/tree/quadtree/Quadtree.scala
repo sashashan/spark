@@ -107,7 +107,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     val index = getIndex(p)
     // Making sure the point is inside the square 
     if (isOutsideTheNode(p)) {
-      return
+      return Nil 
     }
     if (index != -1 && nodes(0) != null) {
       nodes(index).retrieveForKNN(returnObjects, p)
