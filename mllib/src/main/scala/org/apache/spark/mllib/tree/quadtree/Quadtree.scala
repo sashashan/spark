@@ -117,6 +117,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
   
   def eucledianDist(p1: Point, p2: Point): Int {
     var ans = math.sqrt(pow(p1.getX - p2.getX, 2) + pow(p1.getY - p2.getY, 2)).toInt
+    ans
   }
   
   def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] {
