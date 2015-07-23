@@ -106,7 +106,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
   def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
     val index = getIndex(p)
     // Making sure the point is inside the square 
-    if (isOutsideTheSquare(p)) {
+    if (isOutsideTheNode(p)) {
       return
     }
     if (index != -1 && nodes(0) != null) {
