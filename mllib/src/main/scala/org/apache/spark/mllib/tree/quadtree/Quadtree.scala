@@ -103,23 +103,22 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
    * all the children, and those children that do not contain or touch the point
    * are discarded.
    */
-  def retrieveForKNN(returnObjects: ArrayList[Point], p: Point) {
+  def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
     val index = getIndex(p)
     // Making sure the point is inside the square 
-    if (isOutsideTheNode(p)) {
-      return Nil
-    }
-    if (index != -1 && nodes(0) != null) {
-      nodes(index).retrieveForKNN(returnObjects, p)
-    } 
-    // For points that lie on the midline
-    else if (index == -1 && nodes(0) != null) {
-      for (i <- 0 until 4) {
-        nodes(i).retrieveForKNN(returnObjects, p)
+    if (!isOutsideTheNode(p)) {
+      if (index != -1 && nodes(0) != null) {
+        nodes(index).retrieveForKNN(returnObjects, p)
+      } 
+      // For points that lie on the midline
+      else if (index == -1 && nodes(0) != null) {
+        for (i <- 0 until 4) {
+          nodes(i).retrieveForKNN(returnObjects, p)
+        }
       }
-    } 
-    returnObjects.addAll(objects)
-    return returnObjects
+      returnObjects.addAll(objects)
+    }
+    returnObjects
   }
   
   def printTree {
