@@ -120,9 +120,9 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
   }
   
   def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] {
-    // case 1: where the r point lies in the square, and not on the border
     val index = getIndex(rp)
-    if (index > 0) {
+    // case 1: where the r point lies in the square, and not on the border
+    if (index >= 0) {
       retrieveForKNN(result, rp)
       println("Case 1, possible points:")
       for (l <- 0 until result.size) {
@@ -142,7 +142,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     else {
       
     }
-    result
+    return result
   }
   
 } //end class
