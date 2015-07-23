@@ -42,6 +42,9 @@ object Test{
         println(returnObjects.get(l).toString())
       }
     }
+    returnObjects.clear()
+    println("Testing the kNN")
+    kNN(rObjects.get(0), 2, returnObjects)
     
   } //end main
 } //end class
