@@ -2,7 +2,7 @@ package org.apache.spark.mllib.tree.quadtree
 
 import org.apache.spark.rdd.RDD
 import java.util.ArrayList
-import java.awt.Rectangle
+import java.awt.geom.Rectangle2D
 
 object Test{
 
@@ -24,7 +24,7 @@ object Test{
     val rObjects = new ArrayList[Point]() // R set
     recData2.collect().foreach(line => rObjects.add(line))
     
-    val quad = new Quadtree(0, new Rectangle(0, 0, 10, 10))
+    val quad = new Quadtree(0, new Rectangle2D(0, 0, 10, 10))
     quad.clear()
     
     for (i <- 0 until allObjects.size) {
