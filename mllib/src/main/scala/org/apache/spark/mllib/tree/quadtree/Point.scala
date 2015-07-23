@@ -1,4 +1,5 @@
 package org.apache.spark.mllib.tree.quadtree
+import scala.util.Sorting
 
 class Point(var x: Int, var y: Int) extends Serializable {
   
@@ -10,4 +11,8 @@ class Point(var x: Int, var y: Int) extends Serializable {
   
   override def toString() = "x: " + getX + " y: " + getY
   
+}
+
+object DistanceOrdering extends Ordering[Point] {
+  def compare(a:Point, b:Point) = a.getDist compare b.getDist
 }
