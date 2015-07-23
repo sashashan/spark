@@ -115,18 +115,17 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
     else return
   }
   
-  def eucledianDist(p1: Point, p2: Point): Int {
+  def eucledianDist(p1: Point, p2: Point): Int = {
     var ans = math.sqrt(pow(p1.getX - p2.getX, 2) + pow(p1.getY - p2.getY, 2)).toInt
     ans
   }
   
-  def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] {
+  def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] = {
     val index = getIndex(rp)
     // case 1: where the r point lies in the square, and not on the border
     if (index >= 0) {
       retrieveForKNN(result, rp)
       println("Case 1, possible points:")
-      /**
       for (l <- 0 until result.size) {
         println(result.get(l).toString())
       }
@@ -139,7 +138,6 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
       }
       Sorting.quickSort(list)(DistanceOrdering)
       println("The List of ordered distances: " + list)
-      */
     }
     // case 2: where the r point lies on the border 
     else {
