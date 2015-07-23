@@ -116,7 +116,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
   }
   
   def eucledianDist(p1: Point, p2: Point): Int = {
-    var ans = math.sqrt(pow(p1.getX - p2.getX, 2) + pow(p1.getY - p2.getY, 2)).toInt
+    var ans = math.sqrt(math.pow(p1.getX - p2.getX, 2) + math.pow(p1.getY - p2.getY, 2)).toInt
     ans
   }
   
@@ -130,7 +130,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
         println(result.get(l).toString())
       }
       // Get the distances betweeen the points, sort them and get the first k points
-      var list = new List[Point](result.size)
+      var list:List[Point] = Nil
       for (i <- 0 until result.size) {
         result.get(i).setDist(eucledianDist(rp, result.get(i)))
         println("The distance was set to: " + result.get(i).getDist)
