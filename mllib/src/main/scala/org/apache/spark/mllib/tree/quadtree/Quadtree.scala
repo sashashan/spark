@@ -31,6 +31,13 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     nodes(3) = new Quadtree(level + 1, new Rectangle2D.Double(x + subWidth, y + subHeight, subWidth, subHeight))
   }
 
+  /**
+   *  _________
+   * | 1  | 0  |
+   * |____|____|
+   * | 2  | 3  | 
+   * |____|____|
+   */
   private def getIndex(p: Point): Int = {
     var index = -1
     val verticalMidpoint = bounds.getX + (bounds.getWidth / 2)
@@ -59,7 +66,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
    * This is neccessary for the special case of retrieving the points for kNN 
    * when the r point lies on the midline. 
    */
-  def isInsideTheSquare(p: Point): Boolean = {
+  def isOutsideTheNode(p: Point): Boolean = {
     val isAboveOrBelow = (p.getY > bounds.getY) || (p.getY > (bounds.getY + bounds.getHeight)
     val isRightOrLeft = (p.getX > (bounds.getX + bounds.getWidth)) || (p.getX < bounds.getX)
     isAboveOrBelow || isRightOrLeft
@@ -91,14 +98,22 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     }
   }
   
+  /**
+   * If the point lies on the midline, it the retrieve method is called for
+   * all the children, and those children that do not contain or touch the point
+   * are discarded.
+   */
   def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
     val index = getIndex(p)
-    // Checking if the point is actually inside the square 
-    if ()
-    
+    // Making sure the point is inside the square 
+    if (isOutsideTheSquare(p)) {
+      return
+    }
     if (index != -1 && nodes(0) != null) {
       nodes(index).retrieveForKNN(returnObjects, p)
-    } else if (index == -1 && nodes(0) != null) {
+    } 
+    // For points that lie on the midline
+    else if (index == -1 && nodes(0) != null) {
       for (i <- 0 until 4) {
         nodes(i).retrieveForKNN(returnObjects, p)
       }
