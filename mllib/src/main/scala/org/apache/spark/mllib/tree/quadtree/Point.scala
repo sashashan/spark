@@ -8,6 +8,7 @@ class Point(var x: Int, var y: Int) extends Serializable {
   def getX = x
   def getY = y
   def getDist = dist
+  def setDist(d: Double) {dist = d}
   
   override def toString() = "x: " + getX + " y: " + getY
   
