@@ -53,6 +53,17 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     }
     index
   }
+  
+  /**
+   * Checks if the point is inside or touching the node.
+   * This is neccessary for the special case of retrieving the points for kNN 
+   * when the r point lies on the midline. 
+   */
+  def isInsideTheSquare(p: Point): Boolean = {
+    val isAboveOrBelow = (p.getY > bounds.getY) || (p.getY > (bounds.getY + bounds.getHeight)
+    val isRightOrLeft = (p.getX > (bounds.getX + bounds.getWidth)) || (p.getX < bounds.getX)
+    isAboveOrBelow || isRightOrLeft
+  }
 
   def insert(p: Point) {
     // if the node is not a leaf ...
@@ -82,8 +93,15 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
   
   def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
     val index = getIndex(p)
+    // Checking if the point is actually inside the square 
+    if ()
+    
     if (index != -1 && nodes(0) != null) {
       nodes(index).retrieveForKNN(returnObjects, p)
+    } else if (index == -1 && nodes(0) != null) {
+      for (i <- 0 until 4) {
+        nodes(i).retrieveForKNN(returnObjects, p)
+      }
     } 
     returnObjects.addAll(objects)
     returnObjects
@@ -123,7 +141,6 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
   
   def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] = {
     val index = getIndex(rp)
-    // case 1: where the r point lies in the square, and not on the border
     if (index >= 0) {
       retrieveForKNN(result, rp)
       println("Case 1, possible points:")
@@ -147,11 +164,6 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
         result.add(list(i))
       }
     }
-    // case 2: where the r point lies on the border 
-    else {
-      
-    }
-    
     result
   }
   
