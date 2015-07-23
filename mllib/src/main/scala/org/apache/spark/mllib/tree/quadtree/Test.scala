@@ -37,9 +37,9 @@ object Test{
     for (i <- 0 until rObjects.size) {
       returnObjects.clear()
       println("## For obj " + rObjects.get(i).toString())
-      quad.kNN(rObjects.get(i), 2, returnObjects)
+      quad.retrieveForKNN(returnObjects, rObjects.get(i))
       for (l <- 0 until returnObjects.size) {
-        //println(returnObjects.get(l).toString())
+        println(returnObjects.get(l).toString())
       }
     }
     
