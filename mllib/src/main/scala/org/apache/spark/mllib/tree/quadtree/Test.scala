@@ -44,7 +44,7 @@ object Test{
     }
     returnObjects.clear()
     println("Testing the kNN")
-    kNN(rObjects.get(0), 2, returnObjects)
+    quad.kNN(rObjects.get(0), 2, returnObjects)
     
   } //end main
 } //end class
