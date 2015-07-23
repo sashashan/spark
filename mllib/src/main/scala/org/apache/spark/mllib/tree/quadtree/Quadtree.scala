@@ -83,7 +83,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
   def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
     val index = getIndex(p)
     if (index != -1 && nodes(0) != null) {
-      nodes(index).retrieve(returnObjects, p)
+      nodes(index).retrieveForKNN(returnObjects, p)
     } 
     returnObjects.addAll(objects)
     returnObjects
@@ -130,13 +130,13 @@ class Quadtree(private var level: Int, private var bounds: Rectangle) {
         println(result.get(l).toString())
       }
       // Get the distances betweeen the points, sort them and get the first k points
-      var list = List[Point](result.size)
+      var list = new List[Point](result.size)
       for (i <- 0 until result.size) {
         result.get(i).setDist(eucledianDist(rp, result.get(i)))
         println("The distance was set to: " + result.get(i).getDist)
         list :: result.get(i)
       }
-      Sorting.quickSort(list)(DistanceOrdering)
+      Sorting.quickSort[Point](list)(DistanceOrdering)
       println("The List of ordered distances: " + list)
     }
     // case 2: where the r point lies on the border 
