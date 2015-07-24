@@ -1,7 +1,7 @@
 package org.apache.spark.mllib.tree.quadtree
 import scala.util.Sorting
 
-class Point(var x: Int, var y: Int) extends Serializable {
+class Point(var x: Double, var y: Double) extends Serializable {
   
   var dist: Double = -1
   
