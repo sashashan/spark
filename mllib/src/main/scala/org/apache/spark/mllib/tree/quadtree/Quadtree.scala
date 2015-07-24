@@ -7,11 +7,14 @@ import java.awt.geom.Rectangle2D
 
 class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
   // bounds represents the 2D space that the node occupies
-  private var MAX_LEVELS: Int = 10000
-  private var MAX_OBJECTS: Int = 3
+  private var MAX_LEVELS: Int = 1000 
+  private var MAX_OBJECTS: Int = 3 // maximum objects per node
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
   
+  /**
+   * Clears the quadtree.
+   */
   def clear() {
     objects.clear()
     for (i <- 0 until nodes.length if nodes(i) != null) {
@@ -20,6 +23,9 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     }
   }
   
+  /**
+   * Splits the node is split into 4.
+   */
   private def split() {
     val subWidth = (bounds.getWidth / 2)
     val subHeight = (bounds.getHeight / 2)
@@ -32,6 +38,9 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
   }
 
   /**
+   * Determines which node the object belongs to.
+   * -1 means that it is on the midline and so cannot be passed to children;
+   * and it is left inside the parent node.
    *  _________
    * | 1  | 0  |
    * |____|____|
@@ -72,6 +81,11 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     isAboveOrBelow || isRightOrLeft
   }
 
+  /**
+   * Inserts objects into the tree. When a node exceeds the max capacity
+   * of objects, the node is split into 4 and all of the objects are "moved"
+   * to the coresponding children.
+   */
   def insert(p: Point) {
     // if the node is not a leaf ...
     if (nodes(0) != null) {
@@ -153,6 +167,9 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) {
     ans
   }
   
+  /**
+   * Finding the k nearest neighbours of point rp. 
+   */
   def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] = {
     val index = getIndex(rp)
     if (index >= 0) {
