@@ -2,6 +2,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext._ 
 import org.apache.spark.rdd.RDD
+import org.apache.spark.mllib.tree.quadtree
 
 import java.io._
 import java.util._
@@ -25,14 +26,24 @@ object knnJoin {
 		s_points: RDD[String],
 		dim: Int,
 		k: Int,
-		numberOfPartition: Int){
+		numberOfPartitions: Int){
 		
 		//setDim(dim)
 		println("Hello World!")
 		
-		val rand = new Random(numberOfPartition)
-		
-		//vectors.map(e => (rand.nextInt(5), e))
+		val rand = new Random(numberOfPartitions)
+		val partID = rand.nextInt(numberOfPartitions)
+		var groupID = 0
+      		for (i <- 0 until numberOfPartitions) {
+          		groupID = partID * numberOfPartitions + i
+      		}	
+        		
+        	// s set
+        	//	groupID = partID + i * numberOfPartitions
+		val parsedData = s_points.map(_.split(' ')) 
+		val parsed = parsedData.map(line => (line(0), func1(line))) //RDD[(String, B)]
+		parsed.count()
+		vectors.map(e => (rand.nextInt(5), e))
 		
 	}
 	
