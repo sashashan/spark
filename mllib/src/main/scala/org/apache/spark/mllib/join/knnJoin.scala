@@ -31,6 +31,7 @@ object knnJoin {
 		println("Hello World!")
 		
 		val rand = new Random(numberOfPartition)
+		val parsedData = s_points.map(_.split(' '))
 		
 		//vectors.map(e => (rand.nextInt(5), e))
 		
