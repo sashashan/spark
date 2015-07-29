@@ -14,13 +14,13 @@ object Test{
     val width = 1
     
     val parsedData = s_points.map(_.split(' ')) //RDD[String]
-    val recData = parsedData.map(line => new Point(line(0).toInt, line(1).toDouble, line (2), toDouble))
+    val recData = parsedData.map(line => new Point(line(0).toInt, line(1).toDouble, line (2).toDouble))
     val allObjects = new ArrayList[Point]() // S set
     recData.collect().foreach(line => allObjects.add(line))
     
     
     val parsedData2 = r_points.map(_.split(' '))
-    val recData2 = parsedData2.map(line => new Point(line(0).toInt, line(1).toDouble, line (2), toDouble))
+    val recData2 = parsedData2.map(line => new Point(line(0).toInt, line(1).toDouble, line (2).toDouble))
     val rObjects = new ArrayList[Point]() // R set
     recData2.collect().foreach(line => rObjects.add(line))
     
