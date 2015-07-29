@@ -1,16 +1,17 @@
 package org.apache.spark.mllib.tree.quadtree
 import scala.util.Sorting
 
-class Point(var x: Double, var y: Double) extends Serializable {
+class Point(var: pid, var x: Double, var y: Double) extends Serializable {
   
   var dist: Double = -1
   
+  def getID = pid
   def getX = x
   def getY = y
   def getDist = dist
   def setDist(d: Double) {dist = d}
   
-  override def toString() = "x: " + getX + " y: " + getY + " dist: " + getDist
+  override def toString() = "id: " + getID + " x: " + getX + " y: " + getY + " dist: " + getDist
   
 }
 
