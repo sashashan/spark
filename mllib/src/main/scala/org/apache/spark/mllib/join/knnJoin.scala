@@ -33,9 +33,9 @@ object knnJoin {
 		
 		val rand = new Random(numberOfPartition)
 		val parsedData = s_points.map(_.split(' ')) // RDD[Array[String]
-		parsedData.collect().first()
+		//parsedData.collect().first()
 		val recData = parsedData.map(line => new Point(line(0).toInt, line(1).toDouble, line (2).toDouble)) // RDD[Point]
-		recData.collect().first()
+		//recData.collect().first()
 		//val glomed = recData.glom() //RDD[Array[Point]
 		
 		
