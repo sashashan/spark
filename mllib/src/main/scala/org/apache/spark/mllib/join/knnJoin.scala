@@ -5,6 +5,7 @@ import org.apache.spark.rdd.RDD
 
 import java.io._
 import java.util._
+import org.apache.spark.mllib.tree.quadtree
 
 object knnJoin {
 	
@@ -32,6 +33,7 @@ object knnJoin {
 		
 		val rand = new Random(numberOfPartition)
 		val parsedData = s_points.map(_.split(' ')) // RDD[Array[String]
+		
 		
 		//vectors.map(e => (rand.nextInt(5), e))
 		
