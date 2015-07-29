@@ -15,7 +15,7 @@ object Test{
     
     val parsedData = s_points.map(_.split(' ')) //RDD[String]
     val recData = parsedData.map(line => new Point(line(0).toInt, line(1).toDouble, line (2).toDouble))
-    recData.collect().first()
+    //recData.collect().first()
     val allObjects = new ArrayList[Point]() // S set
     recData.collect().foreach(line => allObjects.add(line))
     
