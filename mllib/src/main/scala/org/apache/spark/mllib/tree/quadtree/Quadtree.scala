@@ -5,7 +5,7 @@ import scala.collection.JavaConversions._
 import java.util.ArrayList
 import java.awt.geom.Rectangle2D
 
-class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends Serializable {
+object Quadtree(private var level: Int, private var bounds: Rectangle2D) extends Serializable {
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 1000 
   private var MAX_OBJECTS: Int = 3 // maximum objects per node
@@ -86,7 +86,8 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    * of objects, the node is split into 4 and all of the objects are "moved"
    * to the coresponding children.
    */
-  def insert(p: Point) {
+   
+  def insertR(p: Point) {
     println("insert: I'm called")
     // if the node is not a leaf ...
     if (nodes(0) != null) {
@@ -137,7 +138,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   }
   
   def printTree {
-    if (objects == null && nodes(0) == null) {
+    if (objects == null && nodes(0) == null) { 
       println("This tree is empty.")
       return
     }
