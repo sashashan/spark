@@ -3,8 +3,8 @@ import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext._ 
 import org.apache.spark.rdd.RDD
 
-import java.io._
-import java.util._
+//import java.io._
+//import java.util._
 import org.apache.spark.mllib.tree.quadtree
 
 object knnJoin {
@@ -44,7 +44,7 @@ object knnJoin {
 	}
 	
 	def pLines(lines: Iterator[String]) = {
-		lines.foreach(_.split(' '))
+		lines.map(_.split(' '))
 	}
 	
 	/**
