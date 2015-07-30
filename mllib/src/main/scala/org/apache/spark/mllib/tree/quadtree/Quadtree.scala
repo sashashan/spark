@@ -87,6 +87,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    * to the coresponding children.
    */
   def insert(p: Point) {
+    println("insert: I'm called")
     // if the node is not a leaf ...
     if (nodes(0) != null) {
       val index = getIndex(p)
