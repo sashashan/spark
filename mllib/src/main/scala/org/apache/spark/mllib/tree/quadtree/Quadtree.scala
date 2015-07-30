@@ -87,6 +87,12 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    * to the coresponding children.
    */
    
+  // A method for interacting with RDD 
+  def insert(p: Point): Quadtree = {
+    insertR(p)
+    return this.Quadtree
+  } 
+  
   def insertR(p: Point) {
     println("insert: I'm called")
     // if the node is not a leaf ...
