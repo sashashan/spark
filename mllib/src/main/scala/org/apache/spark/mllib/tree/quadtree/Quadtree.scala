@@ -153,6 +153,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
       println("Printing the tree:")
       printTreeR
       return this
+    }
   }
   
   def printTreeR {
