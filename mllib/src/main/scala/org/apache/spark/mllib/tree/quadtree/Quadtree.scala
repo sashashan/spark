@@ -143,8 +143,10 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     returnObjects
   }
   
-  
-  def printTree {
+  /**
+   * Prints the tree. 
+   */
+  def printTree: Quadtree = {
     if (objects == null && nodes(0) == null) { 
       println("This tree is empty.")
     }
@@ -152,7 +154,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
       println("Printing the tree:")
       printTreeR
     }
-    //return this
+    return this
   }
   
   def printTreeR {
@@ -166,7 +168,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     }
     // printing surface points of the children
     if (nodes(0) != null) {
-      println("Level: " + level)
+      println("--------Level:  " + level + "  ---------")
       println("From top rght corner")
       nodes(0).printTree
       println("Level: " + level)
