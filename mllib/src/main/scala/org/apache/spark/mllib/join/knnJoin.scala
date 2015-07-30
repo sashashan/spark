@@ -6,6 +6,7 @@ import org.apache.spark.rdd.RDD
 //import java.io._
 //import java.util._
 import org.apache.spark.mllib.tree.quadtree
+import java.awt.geom.Rectangle2D
 
 object knnJoin {
 	
@@ -22,6 +23,7 @@ object knnJoin {
 	 */
 
 	def run(
+		sc: SparkContext,
 		r_points: RDD[String],
 		s_points: RDD[String],
 		dim: Int,
@@ -39,12 +41,23 @@ object knnJoin {
 		//val glomed = recData.glom() //RDD[Array[Point]
 		//vectors.map(e => (rand.nextInt(5), e))
 		
-		s_points.mapPartitions(pLines)
+		/**
+		val qtree = new org.apache.spark.mllib.tree.quadtree.Quadtree(0, new Rectangle2D.Double(0, 0, 10000, 10000))
+		val s = Seq(s)
+		val qrdd = sc.parallelize(s) // RDD[Quadtree]
+		val f = qrdd.map(tree => _.insert(s_points.mapPartitions(pLines).map(point => point)))
+		*/
+		
+		//s_points.mapPartitions(pLines) //RDD[Point]
+		
+		
 		
 	}
 	
 	def pLines(lines: Iterator[String]) = {
-		lines.map(_.split(' '))
+		lines.map(_.split(' ')).map(line => new org.apache.spark.mllib.tree.quadtree.Point(
+			line(0).toInt, line(1).toDouble, line (2).toDouble))
+		
 	}
 	
 	/**
