@@ -5,7 +5,7 @@ import scala.collection.JavaConversions._
 import java.util.ArrayList
 import java.awt.geom.Rectangle2D
 
-object Quadtree(var level: Int, var bounds: Rectangle2D) extends Serializable {
+class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends Serializable {
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 1000 
   private var MAX_OBJECTS: Int = 3 // maximum objects per node
