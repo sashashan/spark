@@ -143,12 +143,16 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     returnObjects
   }
   
-  def printTree {
+  
+  def printTree: Quadtree = {
     if (objects == null && nodes(0) == null) { 
       println("This tree is empty.")
       return
     }
-    else printTreeR
+    else {
+      println("Printing the tree:")
+      printTreeR
+      return this
   }
   
   def printTreeR {
