@@ -44,7 +44,7 @@ object knnJoin {
 	}
 	
 	def pLines(lines: Iterator[String]) = {
-		lines.split(' '))
+		lines.split(' ')
 	}
 	
 	/**
