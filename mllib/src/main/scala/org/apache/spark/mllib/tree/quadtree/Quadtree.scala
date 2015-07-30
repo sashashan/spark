@@ -11,7 +11,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   private var MAX_OBJECTS: Int = 3 // maximum objects per node
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
-  override def toString = this.printTree
+  override def toString() = this.printTree
   
   /**
    * Clears the quadtree.
