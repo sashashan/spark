@@ -12,7 +12,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   private var NUM_OBJECTS: Int = 0 // starts at 0
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
-  override def toString() = "This tree has " + NUM_OBJECTS + " points " + "Showing the tree: " + printTreeR
+  override def toString() = "This tree has " + NUM_OBJECTS + " point(s). " + "Showing the tree: " + printTreeR
   
   /**
    * Clears the quadtree.
