@@ -11,6 +11,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   private var MAX_OBJECTS: Int = 3 // maximum objects per node
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
+  override def toString = this.printTree
   
   /**
    * Clears the quadtree.
@@ -160,7 +161,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   def printTreeR {
     // printing any surface points
     if (objects != null) {
-      println("Level: " + level)
+      println("--------Level:  " + level + "  ---------")
       println("Borders: x: " + bounds.getX + " y: " + bounds.getY + " width: " + bounds.getWidth + " height: " + bounds.getHeight)
       for (i <- 0 until objects.size) {
         println(objects.get(i).toString())
