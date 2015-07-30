@@ -9,9 +9,10 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   // bounds represents the 2D space that the node occupies
   private var MAX_LEVELS: Int = 1000 
   private var MAX_OBJECTS: Int = 3 // maximum objects per node
+  private var NUM_OBJECTS: Int 
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
-  override def toString() = this.printTree
+  override def toString() = "This tree has " + NUM_OBJECTS + " points " + "Showing the tree: " + printTreeR
   
   /**
    * Clears the quadtree.
@@ -90,6 +91,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    
   // A method for interacting with RDD 
   def insert(p: Point): Quadtree = {
+    NUM_OBJECTS += 1
     insertR(p)
     return this
   } 
