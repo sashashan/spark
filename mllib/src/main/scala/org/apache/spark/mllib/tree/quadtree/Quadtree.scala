@@ -88,9 +88,9 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    */
    
   // A method for interacting with RDD 
-  def insert(p: Point) {
+  def insert(p: Point): Quadtree {
     insertR(p)
-    //return this
+    return this
   } 
   
   def insertR(p: Point) {
