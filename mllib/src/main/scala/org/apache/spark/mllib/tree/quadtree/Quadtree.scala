@@ -37,6 +37,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     nodes(1) = new Quadtree(level + 1, new Rectangle2D.Double(x, y, subWidth, subHeight))
     nodes(2) = new Quadtree(level + 1, new Rectangle2D.Double(x, y + subHeight, subWidth, subHeight))
     nodes(3) = new Quadtree(level + 1, new Rectangle2D.Double(x + subWidth, y + subHeight, subWidth, subHeight))
+    println("split")
   }
 
   /**
@@ -91,6 +92,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    
   // A method for interacting with RDD 
   def insert(p: Point): Quadtree = {
+    println("Inserting point: " + p.toString)
     NUM_OBJECTS += 1
     insertR(p)
     return this
@@ -101,6 +103,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     // if the node is not a leaf ...
     if (nodes(0) != null) {
       val index = getIndex(p)
+      println("index: " + index)
       if (index != -1) {
         nodes(index).insert(p)
         return
