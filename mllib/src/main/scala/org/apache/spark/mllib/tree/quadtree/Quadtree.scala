@@ -43,7 +43,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     nodes(2) = new Quadtree(level + 1, new Rectangle2D.Double(x, y + subHeight, subWidth, subHeight))
     nodes(2).setParent(this)
     nodes(3) = new Quadtree(level + 1, new Rectangle2D.Double(x + subWidth, y + subHeight, subWidth, subHeight))
-    nodes(4).setParent(this)
+    nodes(3).setParent(this)
     println("split")
   }
 
