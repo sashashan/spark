@@ -158,9 +158,13 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
       println("Adding objects")
       returnObjects.addAll(objects)
       // Checking if the retrieved objects > k, if not, add the points from the parent
-      while (returnedObjects.size < k) {
+      while (returnObjects.size < k) {
         println("Adding the parent.")
         returnObjects.addAll(getParent.objects)
+        for (i <- 0 until 4) {
+          if (index != i)
+            returnObject.addAll(getParent.node(i).objects)
+        }
       }
     }
     returnObjects
