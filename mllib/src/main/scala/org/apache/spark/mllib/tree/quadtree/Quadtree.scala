@@ -138,7 +138,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    * all the children, and those children that do not contain or touch the point
    * are discarded.
    */
-  def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
+  def retrieveForKNN(returnObjects: ArrayList[Point], p: Point, k: Int): ArrayList[Point] = {
     val index = getIndex(p)
     println("index: " + index)
     // Making sure the point is inside the square 
@@ -160,10 +160,11 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
       // Checking if the retrieved objects > k, if not, add the points from the parent
       while (returnObjects.size < k) {
         println("Adding the parent.")
-        returnObjects.addAll(getParent.objects)
+        if (getParent == null) println ("ERROR IN RETRIEVE. Trying to access a non existent parent, probably the root's parent.")
+        returnObjectss.addAll(getParent.objects)
         for (i <- 0 until 4) {
           if (index != i)
-            returnObject.addAll(getParent.node(i).objects)
+            returnObjects.addAll(getParent.node(i).objects)
         }
       }
     }
@@ -222,7 +223,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   def kNN(rp: Point, k: Int, result: ArrayList[Point]): ArrayList[Point] = {
     val index = getIndex(rp)
     if (index >= 0) {
-      retrieveForKNN(result, rp)
+      retrieveForKNN(result, rp, k)
       println("Possible points:")
       for (l <- 0 until result.size) {
         println(result.get(l).toString())
