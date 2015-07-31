@@ -20,7 +20,7 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     for (i <- 0 until 4) {
       println("Printing node: " + i)
       for (j <- 0 until nodes(i).objects.size) {
-          pritnln(nodes(i).objects.get(j).toString)
+          println(nodes(i).objects.get(j).toString)
         }
     }
   }
