@@ -146,13 +146,13 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     if (!isOutsideTheNode(p)) {
       if (index != -1 && nodes(0) != null) {
         println("retriving points from the 4 children")
-        nodes(index).retrieveForKNN(returnObjects, p)
+        nodes(index).retrieveForKNN(returnObjects, p, k)
         
       } 
       // For points that lie on the midline
       else if (index == -1 && nodes(0) != null) {
         for (i <- 0 until 4) {
-          nodes(i).retrieveForKNN(returnObjects, p)
+          nodes(i).retrieveForKNN(returnObjects, p, k)
         }
       }
       println("Adding objects")
@@ -161,10 +161,10 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
       while (returnObjects.size < k) {
         println("Adding the parent.")
         if (getParent == null) println ("ERROR IN RETRIEVE. Trying to access a non existent parent, probably the root's parent.")
-        returnObjectss.addAll(getParent.objects)
+        returnObjects.addAll(getParent.objects)
         for (i <- 0 until 4) {
           if (index != i)
-            returnObjects.addAll(getParent.node(i).objects)
+            returnObjects.addAll(getParent.nodes(i).objects)
         }
       }
     }
