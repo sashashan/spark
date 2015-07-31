@@ -7,8 +7,8 @@ import java.awt.geom.Rectangle2D
 
 class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends Serializable {
   // bounds represents the 2D space that the node occupies
-  private var MAX_LEVELS: Int = 1000 
-  private var MAX_OBJECTS: Int = 3 // maximum objects per node
+  private var MAX_LEVELS: Int = 20 
+  private var MAX_OBJECTS: Int = 5 // maximum objects per node
   private var NUM_OBJECTS: Int = 0 // starts at 0
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
