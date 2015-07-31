@@ -16,6 +16,14 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   override def toString() = "This tree has " + NUM_OBJECTS + " point(s). " + "Showing the tree: " + printTreeR
   def setParent(tree: Quadtree) {parentNode = tree}
   def getParent() = parentNode
+  def printNodes() {
+    for (i <- 0 until 4) {
+      println("Printing node: " + i)
+      for (j <- 0 until nodes(i).objects.size) {
+          pritnln(nodes(i).objects.get(j).toString)
+        }
+    }
+  }
   
   /**
    * Clears the quadtree.
@@ -161,10 +169,16 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
       while (returnObjects.size < k) {
         println("Adding the parent.")
         if (getParent == null) println ("ERROR IN RETRIEVE. Trying to access a non existent parent, probably the root's parent.")
+        println("Parents surface objects:")
+        for (i <- 0 until getParent.objects.size) {
+          println(getParent.objects.get(i).toString)
+        }
         returnObjects.addAll(getParent.objects)
+        getParent.printNodes
         for (i <- 0 until 4) {
-          if (index != i)
+          if (index != i) {
             returnObjects.addAll(getParent.nodes(i).objects)
+          }
         }
       }
     }
