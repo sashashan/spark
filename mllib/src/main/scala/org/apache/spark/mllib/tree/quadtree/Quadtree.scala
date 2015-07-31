@@ -10,9 +10,12 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
   private var MAX_LEVELS: Int = 20 
   private var MAX_OBJECTS: Int = 5 // maximum objects per node
   private var NUM_OBJECTS: Int = 0 // starts at 0
+  var parentNode: Quadtree = null // be default the root will have a null parent 
   private var objects = new ArrayList[Point]()
   private var nodes: Array[Quadtree] = new Array[Quadtree](4)
   override def toString() = "This tree has " + NUM_OBJECTS + " point(s). " + "Showing the tree: " + printTreeR
+  def setParent(tree: Quadtree) {parentNode = tree}
+  def getParent() = parentNode
   
   /**
    * Clears the quadtree.
@@ -34,9 +37,13 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     val x = bounds.getX
     val y = bounds.getY
     nodes(0) = new Quadtree(level + 1, new Rectangle2D.Double(x + subWidth, y, subWidth, subHeight))
+    nodes(0).setParent(this)
     nodes(1) = new Quadtree(level + 1, new Rectangle2D.Double(x, y, subWidth, subHeight))
+    nodes(1).setParent(this)
     nodes(2) = new Quadtree(level + 1, new Rectangle2D.Double(x, y + subHeight, subWidth, subHeight))
+    nodes(2).setParent(this)
     nodes(3) = new Quadtree(level + 1, new Rectangle2D.Double(x + subWidth, y + subHeight, subWidth, subHeight))
+    nodes(4).setParent(this)
     println("split")
   }
 
@@ -138,7 +145,9 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     println("Is outside the node?: " + isOutsideTheNode(p))
     if (!isOutsideTheNode(p)) {
       if (index != -1 && nodes(0) != null) {
+        println("retriving points from the 4 children")
         nodes(index).retrieveForKNN(returnObjects, p)
+        
       } 
       // For points that lie on the midline
       else if (index == -1 && nodes(0) != null) {
@@ -146,7 +155,13 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
           nodes(i).retrieveForKNN(returnObjects, p)
         }
       }
+      println("Adding objects")
       returnObjects.addAll(objects)
+      // Checking if the retrieved objects > k, if not, add the points from the parent
+      while (returnedObjects.size < k) {
+        println("Adding the parent.")
+        returnObjects.addAll(getParent.objects)
+      }
     }
     returnObjects
   }
