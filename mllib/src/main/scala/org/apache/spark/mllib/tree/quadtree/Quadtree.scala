@@ -133,7 +133,9 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
    */
   def retrieveForKNN(returnObjects: ArrayList[Point], p: Point): ArrayList[Point] = {
     val index = getIndex(p)
+    println("index: " + index)
     // Making sure the point is inside the square 
+    println("Is outside the node?: " + isOutsideTheNode(p))
     if (!isOutsideTheNode(p)) {
       if (index != -1 && nodes(0) != null) {
         nodes(index).retrieveForKNN(returnObjects, p)
@@ -190,8 +192,8 @@ class Quadtree(private var level: Int, private var bounds: Rectangle2D) extends 
     else return
   }
   
-  def eucledianDist(p1: Point, p2: Point): Int = {
-    var ans = math.sqrt(math.pow(p1.getX - p2.getX, 2) + math.pow(p1.getY - p2.getY, 2)).toInt
+  def eucledianDist(p1: Point, p2: Point): Double = {
+    var ans = math.sqrt(math.pow(p1.getX - p2.getX, 2) + math.pow(p1.getY - p2.getY, 2))
     ans
   }
   
